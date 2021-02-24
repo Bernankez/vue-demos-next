@@ -8,14 +8,28 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'home',
     component: Layout,
     children: [
       {
         path: '',
+        name: 'home',
         component: () => import('../views/home.vue'),
         meta: {
           title: '首页'
+        }
+      }
+    ]
+  },
+  {
+    path: '/calculator',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'calculator',
+        component: () => import('../views/calculator/index.vue'),
+        meta: {
+          title: '计算器'
         }
       }
     ]

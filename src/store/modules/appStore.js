@@ -1,19 +1,18 @@
 const appStore = {
   namespaced: true,
   state: () => ({
-    example: 'aaa',
+    MenuCollapsed: true
   }),
   getters: {
-    getExample: state => state.example
   },
   mutations: {
-    SET_EXAMPLE(state, example) {
-      state.example = example;
+    TOGGLE_COLLAPSED(state, collapsed) {
+      state.MenuCollapsed = collapsed;
     }
   },
   actions: {
-    setExample({ commit }, example) {
-      commit('SET_EXAMPLE', example);
+    toggleCollapsed({ commit }, collapsed) {
+      commit('TOGGLE_COLLAPSED', collapsed);
     }
   }
 }
