@@ -1,10 +1,10 @@
 <template>
   <div class="header-bar">
-    <a-button type="link" @click="onToggle">
+    <a-button type="link" size="large" @click="onToggle">
       <MenuFoldOutlined v-if="!isCollapsed" />
       <MenuUnfoldOutlined v-else />
     </a-button>
-    <a-page-header :title="title" @back="onBack"></a-page-header>
+    <a-page-header :title="title"></a-page-header>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
     components: { MenuFoldOutlined, MenuUnfoldOutlined },
     setup() {
       const route = useRoute();
-      const router = useRouter();
+      // const router = useRouter();
       const store = useStore();
 
       const state = reactive({
@@ -31,9 +31,9 @@
         }),
       });
 
-      const onBack = () => {
-        router.go(-1);
-      };
+      // const onBack = () => {
+      //   router.go(-1);
+      // };
 
       const onToggle = () => {
         store.dispatch("app/toggleCollapsed", !state.isCollapsed);
@@ -41,7 +41,7 @@
 
       return {
         ...toRefs(state),
-        onBack,
+        // onBack,
         onToggle
       };
     },

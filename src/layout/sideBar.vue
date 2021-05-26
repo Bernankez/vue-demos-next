@@ -1,6 +1,12 @@
 <template>
-  <a-menu style="height: 100%" mode="inline" theme="dark" :inline-collapsed="isCollapsed" v-model:openKeys="openKeys"
-    v-model:selectedKeys="selectedKeys">
+  <a-menu
+    style="height: 100%"
+    mode="inline"
+    theme="dark"
+    :inline-collapsed="isCollapsed"
+    v-model:openKeys="openKeys"
+    v-model:selectedKeys="selectedKeys"
+  >
     <a-menu-item key="home">
       <router-link to="/home">
         <HomeFilled />
@@ -13,6 +19,12 @@
         <span>Calculator</span>
       </router-link>
     </a-menu-item>
+    <a-menu-item key="dateCalculator">
+      <router-link to="/dateCalculator">
+        <ScheduleFilled />
+        <span>DateCalculator</span>
+      </router-link>
+    </a-menu-item>
   </a-menu>
 </template>
 
@@ -20,11 +32,15 @@
   import { computed, defineComponent, reactive, toRefs, watch } from "vue";
   import { useStore } from "vuex";
   import { useRoute } from "vue-router";
-  import { CalculatorFilled, HomeFilled } from "@ant-design/icons-vue";
+  import {
+    CalculatorFilled,
+    HomeFilled,
+    ScheduleFilled,
+  } from "@ant-design/icons-vue";
 
   export default defineComponent({
     name: "sideBar",
-    components: { CalculatorFilled, HomeFilled },
+    components: { CalculatorFilled, HomeFilled, ScheduleFilled },
     setup() {
       const store = useStore();
       const route = useRoute();
@@ -39,8 +55,6 @@
         openKeys: [],
         preOpenKeys: [],
       });
-
-      console.log(route.name);
 
       watch(
         () => state.openKeys,
